@@ -1,0 +1,23 @@
+<div>
+  <mat-icon [matBadge]="usuarios.length" matBadgeColor="primary">people</mat-icon>
+</div>
+<div fxLayout="row wrap" fxLayout.lt-sm="column">
+  <mat-card fxFlex="20" class="card-usuario" *ngFor="let usuario of usuarios">
+    <mat-card-header>
+      <mat-card-title>{{usuario.nome | titlecase}}</mat-card-title>
+      <mat-card-subtitle *ngIf="usuario.cpf.length > 0">CPF: {{usuario.cpf | cpf}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      Professor em.... Tem {{usuario.idade}} anos<br>
+      Meu telefone é: {{usuario.telefone}}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [routerLink]="['/editausuario', usuario.id]">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-button (click)="excluir(usuario)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

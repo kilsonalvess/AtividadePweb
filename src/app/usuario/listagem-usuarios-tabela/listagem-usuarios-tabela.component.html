@@ -1,0 +1,54 @@
+<mat-form-field>
+  <mat-label>Filtro</mat-label>
+  <input matInput placeholder="filtre por qualquer campo" (keyup)="filtrar(inputFiltro.value)" #inputFiltro>
+</mat-form-field>
+
+<mat-table [dataSource]="dataSource">
+  <mat-header-row *matHeaderRowDef="mostrarColunas"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: mostrarColunas;"></mat-row>
+
+  <!--  Forma de geração de linhas com FOR-->
+  <!--  <ng-container matColumnDef="{{coluna}}" *ngFor="let coluna of mostrarColunas">-->
+  <!--    <mat-header-cell *matHeaderCellDef>{{coluna | titlecase}}</mat-header-cell>-->
+  <!--    <mat-cell *matCellDef="let item">-->
+  <!--      <div *ngIf="coluna != 'acoes'">{{item[coluna]}}</div>-->
+  <!--      <div *ngIf="coluna == 'acoes'">-->
+  <!--        <button mat-icon-button><mat-icon>edit</mat-icon></button>-->
+  <!--        <button mat-icon-button><mat-icon (click)="apagar(item.id)">delete</mat-icon></button>-->
+  <!--      </div>-->
+  <!--    </mat-cell>-->
+  <!--  </ng-container>-->
+
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+    <mat-cell *matCellDef="let item">{{item.nome}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="cpf">
+    <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
+    <mat-cell *matCellDef="let item">{{item.cpf | cpf}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="idade">
+    <mat-header-cell *matHeaderCellDef>Idade</mat-header-cell>
+    <mat-cell *matCellDef="let item">{{item.idade}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="telefone">
+    <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
+    <mat-cell *matCellDef="let item">{{item.telefone | telefone}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="acoes">
+    <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+    <mat-cell *matCellDef="let item">
+      <button mat-icon-button>
+        <mat-icon (click)="editar(item)">edit</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon (click)="apagar(item.id)">delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+</mat-table>

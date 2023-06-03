@@ -1,0 +1,20 @@
+<mat-card class="card-cadastro">
+  <mat-card-content>
+    <mat-form-field appearance="fill">
+      <input matInput [(ngModel)]="usuarioDeManutencao.nome" placeholder="Digite o nome">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <input matInput [(ngModel)]="usuarioDeManutencao.idade" placeholder="Digite a idade">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input matInput [(ngModel)]="usuarioDeManutencao.cpf" placeholder="Digite o CPF">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input matInput [(ngModel)]="usuarioDeManutencao.telefone" placeholder="Digite o telefone">
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="manter()">{{nomeBotaoManutencao}}</button>
+  </mat-card-actions>
+</mat-card>
